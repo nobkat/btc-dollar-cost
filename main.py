@@ -23,7 +23,10 @@ btc_price = bitflyer.get_btc_price()
 btc_amount = round(yen_amount / btc_price, 8)
 
 LINE_message(
-    f"BTCを{btc_amount}購入します。\nBTCの価格:{btc_price}円\n日本円残高:{jpy_balance}円"
+    f""""BTCを{btc_amount}購入します。
+BTCの価格:{btc_price}円
+日本円残高:{jpy_balance}円
+https://github.com/nobkat/btc-dollar-cost/settings/secrets/actions で実行しています。"""
 )
 
 # bitflyer.market_order("BUY", 0.001)

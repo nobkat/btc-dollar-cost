@@ -1,4 +1,4 @@
-name: Daily Task
+name: Buy BTC every week
 
 on:
   # push:
@@ -17,12 +17,11 @@ jobs:
       BITFLYER_API_SECRET: ${{ secrets.BITFLYER_API_SECRET }}
       LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          architecture: 'x64'
+          cache: 'pip' # caching pip dependencies
       - name: Install dependencies
         run: |
           pip install -r requirements.lock
