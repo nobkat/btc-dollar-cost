@@ -34,7 +34,6 @@ class Bitflyerorder:
         板情報取得関数
         """
         tick = self.api.ticker(product_code=self.product_code)
-
         return tick["ltp"]
 
     def market_order(self, side, size, time_to_expire=1):
@@ -52,15 +51,8 @@ class Bitflyerorder:
             size=size,
             price=0,
         )
-        print(
-            "<成行注文>"
-            + "【方向】"
-            + str(side)
-            + "【サイズ】"
-            + str(size)
-            + "【注文保持時間】"
-            + str(time_to_expire)
-        )
+        if "error_message" in res:
+            raise Exception(res["error_message"])
 
     def limit_order(self, side, price, size, time_to_expire=1):
         """
@@ -79,21 +71,9 @@ class Bitflyerorder:
             size=size,
             price=price,
         )
-        print(
-            "<指値注文>"
-            + "【方向】"
-            + str(side)
-            + "【サイズ】"
-            + str(size)
-            + "【指値】"
-            + str(price)
-            + "【注文保持時間】"
-            + str(time_to_expire)
-        )
 
     def cancel_order(self):
         """
         注文取消関数
         """
         self.api.cancelallchildorders(product_code=self.product_code)
-        print("注文をキャンセルしました")
