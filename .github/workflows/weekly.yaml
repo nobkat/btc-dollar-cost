@@ -1,0 +1,30 @@
+name: Daily Task
+
+on:
+  # push:
+  #   branches: 
+  #     - main
+  schedule:
+    # 土曜日午前0時UTC (金曜日午後17時JST）に実行
+    - cron: "0 2 * * 6"
+  workflow_dispatch:
+
+jobs:
+  podcast-maker:
+    runs-on: ubuntu-latest
+    env:
+      BITFLYER_API_KEY: ${{ secrets.BITFLYER_API_KEY }}
+      BITFLYER_API_SECRET: ${{ secrets.BITFLYER_API_SECRET }}
+      LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'
+          architecture: 'x64'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.lock
+      - name: Run Python
+        run: python main.py 10000
