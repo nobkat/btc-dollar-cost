@@ -31,5 +31,5 @@ LINE_message(
     f""""BTCを{btc_amount}成行注文しました。
 BTCの価格:{btc_price}円
 日本円残高:{jpy_balance}円
-https://github.com/nobkat/btc-dollar-cost/settings/secrets/actions で実行しています。"""
+https://github.com/nobkat/btc-dollar-cost/actions で実行しています。"""
 )
