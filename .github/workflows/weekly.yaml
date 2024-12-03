@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  podcast-maker:
+  buy-btc:
     runs-on: ubuntu-latest
     env:
       BITFLYER_API_KEY: ${{ secrets.BITFLYER_API_KEY }}
