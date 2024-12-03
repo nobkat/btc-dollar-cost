@@ -5,8 +5,10 @@ on:
   #   branches: 
   #     - main
   schedule:
-    # 土曜日午前0時UTC (金曜日午後17時JST）に実行
-    - cron: "0 2 * * 6"
+    # 土曜日午前8時UTC (土曜日午後17時JST）に実行
+    # - cron: "0 8 * * 6"
+    # 火曜日4時UTC (金曜日午後13時JST）に実行
+    - cron: "0 4 * * 2"
   workflow_dispatch:
 
 jobs:
@@ -16,6 +18,7 @@ jobs:
       BITFLYER_API_KEY: ${{ secrets.BITFLYER_API_KEY }}
       BITFLYER_API_SECRET: ${{ secrets.BITFLYER_API_SECRET }}
       LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
+      BUY_AMOUNT: ${{ secrets.BUY_AMOUNT }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,4 +29,4 @@ jobs:
         run: |
           pip install -r requirements.lock
       - name: Run Python
-        run: python main.py 50000
+        run: python main.py $BUY_AMOUNT
