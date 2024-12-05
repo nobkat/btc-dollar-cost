@@ -6,9 +6,9 @@ on:
   #     - main
   schedule:
     # 土曜日午前8時UTC (土曜日午後17時JST）に実行
-    # - cron: "0 8 * * 6"
+    - cron: "0 8 * * 6"
     # 火曜日4時UTC (金曜日午後13時JST）に実行
-    - cron: "0 4 * * 2"
+    # - cron: "0 4 * * 2"
   workflow_dispatch:
 
 jobs:
