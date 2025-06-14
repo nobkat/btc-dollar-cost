@@ -4,7 +4,6 @@ import argparse
 from dotenv import load_dotenv
 
 from bitflyer import Bitflyerorder
-from line import LINE_message
 
 load_dotenv()
 
@@ -27,7 +26,7 @@ except Exception as e:
     LINE_message(f"エラーが発生しました。{e}")
     exit()
 
-LINE_message(
+print(
     f""""BTCを{btc_amount}成行注文しました。
 BTCの価格:{btc_price}円
 日本円残高:{jpy_balance}円
